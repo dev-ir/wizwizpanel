@@ -1,5 +1,7 @@
 <?php
 include 'class-options.php';
+settings_option_admin();
+
 class VolumeInsertionHandler {
     private $conn;
 
@@ -1539,6 +1541,18 @@ function settings_save_admin($conn){
 
     }
 }
+
+function settings_option_admin(){
+    if(isset($_POST['option_data']) && $_POST['option_data'] == true) {
+		unset($_POST['option_data']);
+		unset($_POST['save_setting']);
+		foreach( $_POST['wizwiz_option'] as $key => $value ){
+			$option = new wizwiz_option();
+			$option->update_option($key,$value);
+		}
+    }
+}
+
 function settings_backup_channel($conn){
     if(isset($_POST['action']) && $_POST['action'] == 'save_backup') {
         foreach($_POST as &$post_var) {
