@@ -179,7 +179,8 @@ $_LANG['bankAccount'] = 'شماره کارت';
 $_LANG['Username'] = 'نام کاربری';
 $_LANG['Password'] = 'رمز عبور';
 $_LANG['backupChannelid'] = 'آیدی کانال بک آپ';
-$_LANG['verify_user'] = 'وریفای کاربر';
+$_LANG['verify_user'] = 'تایید کاربر';
+$_LANG['verify_user_mobile'] = 'تایید موبایل کاربر';
 
 
 //menu
