@@ -660,7 +660,7 @@ if (file_exists($lang_file)) {
                 </form>
             </section>
 
-            <!-- New Option -->
+            <!-- New Option : Verify USER -->
 
             <section class="mt-5 w-full p-6 mx-auto bg-white rounded-md shadow-sm dark:bg-gray-800">
                 <form id="save_backup">
