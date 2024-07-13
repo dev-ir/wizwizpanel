@@ -25,10 +25,11 @@ session_login_wizwiz();
     <script src="./assets/js/init-alpine.js"></script>
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/wizwiz.js"></script>
+    
     <style>
         @font-face {
             font-family: IRANSans;
-            src: url('../assets/fonts/IRANSans.ttf'); format('truetype');
+            src: url('./assets/fonts/IRANSans.ttf'); format('truetype');
             font-weight: normal;
         }
         ::-webkit-scrollbar {
@@ -39,6 +40,9 @@ session_login_wizwiz();
         ::-webkit-scrollbar-thumb {
             height: 50px;
             background-color: #e7cef1;
+        }
+        body{
+            text-align: right;
         }
     </style>
 </head>
