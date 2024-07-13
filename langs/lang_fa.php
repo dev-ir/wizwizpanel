@@ -179,9 +179,11 @@ $_LANG['bankAccount'] = 'شماره کارت';
 $_LANG['Username'] = 'نام کاربری';
 $_LANG['Password'] = 'رمز عبور';
 $_LANG['backupChannelid'] = 'آیدی کانال بک آپ';
-$_LANG['verify_user'] = 'تایید کاربر';
+$_LANG['verify_user'] = 'تایید کد معرف کاربر';
 $_LANG['verify_user_mobile'] = 'تایید موبایل کاربر';
-
+$_LANG['Enable'] = 'فعال';
+$_LANG['Disable'] = 'غیرفعال';
+$_LANG['Choose_a_status'] = 'انتخاب وضعیت';
 
 //menu
 $_LANG['Dashboard'] = 'داشبورد';
