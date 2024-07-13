@@ -184,6 +184,7 @@ $_LANG['verify_user_mobile'] = 'تایید موبایل کاربر';
 $_LANG['Enable'] = 'فعال';
 $_LANG['Disable'] = 'غیرفعال';
 $_LANG['Choose_a_status'] = 'انتخاب وضعیت';
+$_LANG['Refral'] = 'کد دعوت';
 
 //menu
 $_LANG['Dashboard'] = 'داشبورد';

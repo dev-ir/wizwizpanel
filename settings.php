@@ -522,6 +522,8 @@ if (file_exists($lang_file)) {
 
             <!-- END Section -->
 
+
+            
         </div>
     </main>
 </div>
