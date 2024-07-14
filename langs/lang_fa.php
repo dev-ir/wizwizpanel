@@ -21,6 +21,7 @@ $_LANG['CPU'] = 'سی پی یو';
 $_LANG['Memory'] = 'مموری';
 $_LANG['Disk'] = 'فضا';
 $_LANG['Dashboards'] = 'داشبورد';
+$_LANG['Swap'] = 'Swap';
 
 //orders.php
 $_LANG['id'] = 'آیدی';
