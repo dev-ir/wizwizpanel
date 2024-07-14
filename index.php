@@ -1,10 +1,7 @@
 <?php
 include 'includ/header.php';
-?>
-<?php
-$sql_admins = "SELECT * FROM admins";
 
-$stmt = $conn->prepare($sql_admins);
+$stmt = $conn->prepare("SELECT * FROM admins");
 $stmt->execute();
 $result_admins = $stmt->get_result();
 $stmt->close();
@@ -17,16 +14,12 @@ if (file_exists($lang_file)) {
 
 include 'admin-menu.php';
 ?>
-
-
 <div class="flex flex-col flex-1 w-full">
     <?php
     include 'includ/top-header.php';
     ?>
     <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto ">
-
-
             <a style="font-size: 20px;" class="text-xs font-semibold tracking-wide text-left text-gray-500 0 dark:text-gray-400 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
@@ -34,12 +27,7 @@ include 'admin-menu.php';
                 <span class="ml-4"> <?php echo $_LANG['Dashboards'] ?> </span>
                 <?php session_notif_wizwiz() ?>
             </a>
-
-
-
             <div style='margin-top:40px' class="shadow-sm min-w-0 p-4 bg-white rounded-xl dark:bg-gray-800 tracking-wide border-b dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-
-
                 <div class="mt-5 flex justify-center items-center container grid gap-6 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-2	">
                     <div class="m-1" id="cpuDiv">
                         <div class="pie_progress_cpu" role="progressbar" data-goal="33">
@@ -56,14 +44,14 @@ include 'admin-menu.php';
                     <div class="m-1" id="diskDiv">
                         <div class="pie_progress_disk" role="progressbar" data-goal="33">
                             <div class="pie_progress__number dark:text-gray-100">0%</div>
-                            <div class="pie_progress__label dark:text-gray-100"><?php echo $_LANG['Disk'] ?></div>
+                            <div class="pie_progress__label dark:text-gray-100"></div>
                         </div>
                     </div>
 
                     <div class="m-1" id="temperatureDiv">
                         <div class="pie_progress_temperature" role="progressbar" data-goal="0">
                             <div class="pie_progress__number dark:text-gray-100">0°</div>
-                            <div class="pie_progress__label dark:text-gray-100">Swap</div>
+                            <div class="pie_progress__label dark:text-gray-100"><?php echo $_LANG['Swap'] ?></div>
                         </div>
                     </div>
 
@@ -106,7 +94,6 @@ include 'admin-menu.php';
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <!-- Cards -->
@@ -122,13 +109,7 @@ include 'admin-menu.php';
                         <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                             <?php echo $_LANG['users'] ?>
                         </p>
-                        <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                            <?php
-                            $user_count = users_count($conn);
-                            echo $user_count;
-                            ?>
-
-                        </p>
+                        <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"> <?php echo users_count($conn); ?></p>
                     </div>
                 </div>
                 <!-- Card -->
@@ -190,8 +171,6 @@ include 'admin-menu.php';
                 </div>
             </div>
 
-
-
             <?php
             users_on_off($conn);
             users_ban($conn);
@@ -199,7 +178,6 @@ include 'admin-menu.php';
             <!-- New Table -->
             <br>
             <div class="shadow-lg min-w-0 p-4 bg-white font-semibold rounded-lg dark:bg-gray-800 text-xs  tracking-wide text-left text-gray-500 border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-
                 <div class="w-full overflow-x-auto">
                     <table class="w-full whitespace-no-wra">
                         <thead class="">
@@ -214,27 +192,18 @@ include 'admin-menu.php';
                                 <th class="px-4 py-3"><?php echo $_LANG['free'] ?></th>
                                 <th class="px-4 py-3"><?php echo $_LANG['ban'] ?></th>
                                 <th class="px-4 py-3"><?php echo $_LANG['start'] ?></th>
-
                             </tr>
                         </thead>
-
                         <?php
-
                         $users_select = users_select($conn);
                         if (is_array($users_select) || is_object($users_select)) {
-                            foreach ($users_select
-                                as $value) :
+                            foreach ($users_select as $value) :
                                 $timestamp = $value["date"];
-                                $date = jdate('Y-m-d H:i:s', $timestamp);
-
-                                $amount_order_sum1 = "SELECT SUM(amount) FROM orders_list where userid=?";
-
-                                $stmt = $conn->prepare($amount_order_sum1);
+                                $stmt = $conn->prepare("SELECT SUM(amount) FROM orders_list where userid=?");
                                 $stmt->bind_param('i', $value['userid']);
                                 $stmt->execute();
                                 $result_amount_order1 = $stmt->get_result();
                                 $stmt->close();
-
                                 $row_amount_order1 = $result_amount_order1->fetch_assoc();
                                 $show_amount_order1 = implode($row_amount_order1);
                                 echo '<tbody style="font-size: 13px;" class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 text-center border-b dark:border-gray-600">';
@@ -260,7 +229,7 @@ include 'admin-menu.php';
                                 } else {
                                     echo '<td class="px-4 py-3">' . $show_amount_order1 . '</td>';
                                 }
-                                echo '<td class="px-4 py-3">' . $date . '</td>';
+                                echo '<td class="px-4 py-3">' . jdate('Y-m-d H:i:s', $timestamp) . '</td>';
                                 if ($value["phone"]) {
                                     echo '<td class="px-4 py-3 ">' . $value["phone"] . '</td>';
                                 } else {
@@ -300,9 +269,7 @@ include 'admin-menu.php';
             </div>
 
         </div>
-        <br>
-        <br>
-        <br>
+
     </main>
 
 </div>
@@ -329,7 +296,6 @@ include 'admin-menu.php';
             }
         });
     }
-
 
     function getCpu() {
         $.ajax({
